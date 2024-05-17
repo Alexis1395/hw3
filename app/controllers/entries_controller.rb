@@ -1,22 +1,14 @@
 class EntriesController < ApplicationController
-  def new
-    @place = Place.find(params[:place_id])
-    @entry = @place.entries.new
-  end
+def show 
+  @title = Entry.find_by({"place_id" => @place["id"]}) 
+  @posted_on = Entry.find_by({"entry_id" => @entry["id"]}) 
+  @description = Entry.find_by({"entry_id" => @entry["id"]}) 
+end 
 
-  def create
-    @place = Place.find(params[:place_id])
-    @entry = @place.entries.new(entry_params)
-    if @entry.save
-      redirect_to place_path(@place), notice: "Entry was successfully created."
-    else
-      render :new
-    end
-  end
-
-  private
-
-  def entry_params
-    params.require(:entry).permit(:title, :description, :posted_on)
-  end
-end
+def new 
+  @entry = Entry.new 
+  @entry["title"] = params["title"]
+  @entry["description"] = params["description"]
+  @entry.save
+  redirect_to "/places/#{@place["id"]}" 
+end 

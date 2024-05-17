@@ -1,0 +1,15 @@
+<h1>New Post</h1>
+
+<form action="/places/<%= @place["id"] %>" method="post">
+  <p>
+    <label for="title_input">Title</label>
+    <input type="text" name="title" id="title_input">
+  </p>
+
+  <p>
+    <label for="description_input">Description</label>
+    <input type="text" name="description" id="description_input">
+  </p>
+
+  <button>Save</button>
+</form>
