@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  get 'places/index'
+  get 'places/show'
+  get 'places/new'
+  get 'places/create'
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources "places"
+  resources "entries"
 
   # Defines the root path route ("/")
-
-  # get("/", { :controller => "articles", :action => "index" })
+  get("/", { :controller => "places", :action => "index" })
   
 end
