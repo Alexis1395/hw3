@@ -1,11 +1,10 @@
 <h1><%= @place["name"] %></h1>
 
-<% for entry in @entries %>
-  <div class="entry">
-    <h2><%= entry["title"] %></h2>
-    <h3>Posted on: <%= entry["posted_on"] %></h3>
-    <h3>Description: <%= entry["description"] %></h3>
-  </div>
-<% end %>
-
-<p><a href="/entries/new">New Post</a></p>
+<ul>
+  <% @place.entries.each do |entry| %>
+      <h2><%= entry["title"] %></h2>
+      <h3>Posted on: <%= entry["posted_on"] %></h3>
+      <h3>Description: <%= entry["description"] %></h3>
+  <% end %>
+</ul>
+<p><a href="/places/<%= @place["id"] %>/new">New Entry</a></p>
